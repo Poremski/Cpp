@@ -13,24 +13,31 @@ using std::endl;
 
 void check_word(const string& word, const Dictionary& dict)
 {
-    if (dict.contains(word)) {
+    if (dict.contains(word)) 
+    {
         cout << "Correct." << endl;
-    } else {
+    } else 
+    {
         vector<string> suggestions = dict.get_suggestions(word);
-        if (suggestions.empty()) {
+        if (suggestions.empty()) 
+        {
             cout << "Wrong, no suggestions." << endl;
-        } else {
+        } else 
+        {
             cout << "Wrong. Suggestions:" << endl;
-            for (const auto& w : suggestions) {
+            for (const auto& w : suggestions) 
+            {
                 cout << "    " << w << endl;
             }
         }
     }
 }
-int main() {
+int main() 
+{
 	Dictionary dict;
 	string word;
-	while (cin >> word) {
+    while (cin >> word) 
+    {
 		transform(word.begin(), word.end(), word.begin(), ::tolower);
         check_word(word, dict);
 	}
