@@ -21,11 +21,9 @@ LDFLAGS =   -g
 #LDFLAGS +=  -stdlib=libc++
 
 # Targets
-PROGS =  word-processor spell dictionary
+PROGS =  word-processor spell
 
 all: $(PROGS)
-
-test: dictionary
 
 # Targets rely on implicit rules for compiling and linking
 #print_argv: print_argv.o
@@ -34,7 +32,7 @@ test: dictionary
 #encode: encode.o coding.o
 #decode: decode.o coding.o
 dictionary: dictionary.o word.o
-spell: spell.o dictionary.o
+spell: spell.o dictionary.o word.o
 
 
 # Phony targets
