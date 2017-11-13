@@ -68,7 +68,8 @@ void Dictionary::add_trigram_suggestions(vector<string>& suggestions, const stri
 		{
 			for(Word word : Dictionary::words[size+i])
 			{
-				if(word.get_matches(trigrams) >= trigrams.size() / 2) {
+				if(word.get_matches(trigrams) >= trigrams.size() / 2) 
+				{
 					suggestions.push_back(word.get_word());
 				}
 			}
@@ -115,12 +116,14 @@ Dictionary::Dictionary() {
 	
 }
 
-bool Dictionary::contains(const string& word) const {
+bool Dictionary::contains(const string& word) const 
+{
 	std::unordered_set<string>::const_iterator got = Dictionary::word_set.find(word);
 	return got != Dictionary::word_set.end();
 }
 
-vector<string> Dictionary::get_suggestions(const string& word) const {
+vector<string> Dictionary::get_suggestions(const string& word) const 
+{
 	vector<string> suggestions;
 	Dictionary::add_trigram_suggestions(suggestions, word);
 	Dictionary::rank_suggestions(suggestions, word);
