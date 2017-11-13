@@ -19,6 +19,7 @@ void get_trigrams(vector<string>& trigrams, const string& word)
 			trigrams.push_back(word.substr(i, 3));
 		}
 	}
+	std::sort(trigrams.begin(), trigrams.end());
 }
 
 void Dictionary::rank_suggestions(vector<string>& suggestions, const string& missWord) const
@@ -118,7 +119,7 @@ Dictionary::Dictionary() {
 
 bool Dictionary::contains(const string& word) const 
 {
-	std::unordered_set<string>::const_iterator got = Dictionary::word_set.find(word);
+	auto got = Dictionary::word_set.find(word);
 	return got != Dictionary::word_set.end();
 }
 
