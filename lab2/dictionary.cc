@@ -32,7 +32,7 @@ void Dictionary::rank_suggestions(vector<string>& suggestions, const string& mis
 		d[0][i] = i;
 	}
 	
-	for(string word : suggestions)
+	for(auto word : suggestions)
 	{
 		for(unsigned int i = 1; i <= missWord.size(); i++)
 		{
@@ -51,7 +51,7 @@ void Dictionary::rank_suggestions(vector<string>& suggestions, const string& mis
 
 	std::sort(bestWords.begin(), bestWords.end());
 	suggestions.clear();
-	for(std::pair<int, string> p : bestWords)
+	for(auto p : bestWords)
 	{
 		suggestions.push_back(p.second);
 	}
