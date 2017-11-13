@@ -1,5 +1,17 @@
+# Ignore all
+*
+
+# Unignore all with extensions
+!*.*
+
+# Unignore all dirs
+!*/
+
 # Prerequisites
 *.d
+
+# Unignore makefile
+!Makefile
 
 # Compiled Object files
 *.slo

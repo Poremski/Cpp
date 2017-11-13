@@ -34,7 +34,8 @@ void process(std::string file)
 			v.push_back(to_lower(pushstr));
 		}
 		std::sort(v.begin(), v.end());
-		for(std::string s:v){
+		for(std::string s:v)
+		{
 			str += " " + s;
 		}
 		out << str << std::endl;
