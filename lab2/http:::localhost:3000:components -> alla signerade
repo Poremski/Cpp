@@ -1,6 +1,0 @@
-http://localhost:3000/components -> alla signerade komponenter
-http://localhost:3000/components/id -> komponent "id"
-http://localhost:3000/components/id/licenses -> alla licenser i komponent "id"
-http://localhost:3000/components/id/products -> alla produkter med komponent "id"
-http://localhost:3000/components/id/projects -> alla projekt med komponent "id"
-http://localhost:3000/components/usigned -> alla osignerade komponenter
