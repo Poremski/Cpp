@@ -10,6 +10,9 @@
 # Prerequisites
 *.d
 
+# Unignore makefile
+!Makefile
+
 # Compiled Object files
 *.slo
 *.lo
