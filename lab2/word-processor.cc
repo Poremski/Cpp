@@ -8,7 +8,7 @@
 std::string to_lower(std::string s)
 {
 	int length = s.size();
-	for(int i = 0; i<length; ++i)
+	for(int i = 0; i != length; ++i)
 	{
 		s[i] = std::tolower(s[i]);
 	}

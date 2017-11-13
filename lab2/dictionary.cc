@@ -26,7 +26,7 @@ void Dictionary::rank_suggestions(vector<string>& suggestions, const string& mis
 	vector<std::pair<int, string>> bestWords;
 	int d[26][26];
 
-	for(int i = 0; i <= 25; ++i)
+	for(int i = 0; i != 26; ++i)
 	{
 		d[i][0] = i;
 		d[0][i] = i;
@@ -34,9 +34,9 @@ void Dictionary::rank_suggestions(vector<string>& suggestions, const string& mis
 	
 	for(auto word : suggestions)
 	{
-		for(unsigned int i = 1; i <= missWord.size(); i++)
+		for(unsigned int i = 1; i != missWord.size()+1; ++i)
 		{
-			for(unsigned int j = 1; j <= word.size(); j++)
+			for(unsigned int j = 1; j != word.size()+1; ++j)
 			{
 				int min = (missWord[i-1] == word[j-1])? d[i-1][j-1]:  d[i-1][j-1] + 1;
 				min = fmin(min, d[i-1][j] + 1);
