@@ -18,7 +18,6 @@ UserTable::UserTable(const std::string& fname) :UserTable{}
                 char n[80];
                 ufile.getline(n,80);
                 addUser(User(cn,n));
-
             }
         }
     } else {
@@ -43,21 +42,21 @@ void UserTable::addUser(const User& u)
 
     //3. stoppa in den nya användaren i luckan
     users[pos] = u;
+    ++n;
 }
 
 User UserTable::find(int c) const
 {
     // binärsökning (baserad på Holm, 2007)
-
     int low = 0;
     int high = n - 1;
     int mid = -1;
     bool found = false;
-    while (low < high && ! found) {
+    while (low <= high && ! found) {
         mid = (low + high) / 2;
-        //
+
         int midnbr = users[mid].getCardNbr();
-        if (midnbr = c) {
+        if (midnbr == c) {
             found = true;
         } else if (users[mid].getCardNbr() < c) {
             low = mid + 1;
@@ -65,7 +64,6 @@ User UserTable::find(int c) const
             high = mid - 1;
         }
     }
-
     return found ? users[mid] : user_not_found;
 }
 User UserTable::find(std::string name) const
@@ -73,8 +71,6 @@ User UserTable::find(std::string name) const
     for (int i = 0; i != n; ++i) {
         if (users[i].getName() == name) {
             return users[i];
-        } else {
-            return user_not_found;
         }
     }
     return user_not_found;
@@ -102,6 +98,9 @@ void UserTable::print(std::ostream& os) const
     }
     os << "=============" << std::endl;
 }
+
+
+
 /**
     * Testmetod för binärsökningen:
     * går igenom alla användare och kollar att deras kortnummer kan sökas upp.
@@ -110,7 +109,7 @@ void UserTable::print(std::ostream& os) const
     */
 int testFindNbr(const UserTable ut)
 {
-    for (int i = 0; i < ut.n; i++) {
+    for (int i = 0; i != ut.n; ++i) {
         int nbr = ut.users[i].getCardNbr();
         User found = ut.find(nbr);
         if (found != ut.users[i]) {
@@ -118,5 +117,18 @@ int testFindNbr(const UserTable ut)
         }
     }
     return 0;
+}
+
+int UserTable::testFindNumber() const
+{
+	for (int i = 0; i != n; ++i) {
+        int nbr = users[i].getCardNbr();
+        User found = find(nbr);
+        if (found != users[i]) {
+            return nbr;
+        }
+    }
+    return 0; 
+	//return testFindNbr(*this);
 }
 

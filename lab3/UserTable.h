@@ -15,7 +15,7 @@ public:
     User find(int) const;
     User find(std::string) const;
 
-    int testFindNbr() const;
+    int testFindNumber() const;
 
     int getNbrUsers() const {
         return n;
