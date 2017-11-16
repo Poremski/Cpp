@@ -26,11 +26,6 @@ PROGS =  word-processor spell
 all: $(PROGS)
 
 # Targets rely on implicit rules for compiling and linking
-#print_argv: print_argv.o
-#test_editor: test_editor.o editor.o
-#test_coding: test_coding.o coding.o
-#encode: encode.o coding.o
-#decode: decode.o coding.o
 dictionary: dictionary.o word.o
 spell: spell.o dictionary.o word.o
 
