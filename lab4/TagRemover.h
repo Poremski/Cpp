@@ -1,7 +1,6 @@
 #ifndef __TAGREMOVER_H
 #define __TAGREMOVER_H
 
-#include <istream>
 #include <string>
 
 
