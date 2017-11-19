@@ -11,7 +11,7 @@ bool test(string fname)
 	tr.print("files/" + fname + "_result.txt");
 
 	std::ifstream f1{"files/" + fname + "_correct.txt"};
-	std::ifstream f2{"files/" + fname + ".html"};
+	std::ifstream f2{"files/" + fname + "_result.txt"};
 
 	char c1, c2;
 	while((c1 = f1.get()) != EOF && (c2 = f2.get()) != EOF)

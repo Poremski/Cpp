@@ -1,6 +1,8 @@
 #include <iostream>
 #include <iomanip> // for setw and setfill
 #include "date.h"
+#include <sstream>
+#include <string>
 
 using std::cout;
 using std::endl;
@@ -12,13 +14,15 @@ using std::setfill;
  * function with an overloaded operator<<, and add an overloaded operator>>.
  *
  */
-void print(const Date& d) {
-	cout << setw(4) << setfill('0') << d.getYear() << '-';
-	cout << setw(2) << setfill('0') << d.getMonth() << '-';
-	cout << setw(2) << setfill('0') << d.getDay();
+void print(const Date& d, std::stringstream& out) {
+	out << setw(4) << setfill('0') << d.getYear() << '-';
+	out << setw(2) << setfill('0') << d.getMonth() << '-';
+	out << setw(2) << setfill('0') << d.getDay();
 }
 
 int main() {
+	std::stringstream in;
+	std::stringstream out;
 	// Check input and output of dates. Uncomment the following when you 
 	// have added operator>> and operator<<.
 	/*
@@ -43,22 +47,22 @@ int main() {
 	
 	// Check 'next' by creating an object describing today's date, then
 	// printing dates more than a month ahead
-	cout << "--- Today and more than a month ahead:" << endl;
+	out << "--- Today and more than a month ahead:" << endl;
 	Date d1;
-	print(d1);
-	cout << endl;
+	print(d1, out);
+	out << endl;
 	for (int i = 1; i <= 35 ; ++i) {
 		d1.next();
-		print(d1);
-		cout << endl;
+		print(d1, out);
+		out << endl;
 	}
 	
 	// Check so 'next' functions correctly from one year to the next
-	cout << "--- New Year's Eve and the next day:" << endl;
+	out << "--- New Year's Eve and the next day:" << endl;
 	Date d2(2013, 12, 31);
-	print(d2);
-	cout << endl;
+	print(d2, out);
+	out << endl;
 	d2.next();
-	print(d2);
-	cout << endl;
+	print(d2, out);
+	out << endl;
 }

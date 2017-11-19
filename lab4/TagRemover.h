@@ -8,6 +8,8 @@ class TagRemover {
 public:
 	TagRemover(std::string);
 	void print(std::string);
+private: 
+	std::string output;
 };
 
 #endif
