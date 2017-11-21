@@ -1,14 +1,21 @@
 #ifndef DATE_H
 #define DATE_H
 
+#include <string>
+#include <iostream>
+
 class Date {
 public:
 	Date();                    // today's date
-	Date(int y, int m, int d); // yyyy-mm-dd
+	Date(int y, int m, int d):year{y},month{m},day{d} {} // yyyy-mm-dd
 	int getYear() const;       // get the year
 	int getMonth() const;      // get the month
 	int getDay() const;        // get the day
 	void next();               // advance to next day
+	friend std::ostream& operator<<(std::ostream& os, const Date& d);
+	friend std::istream& operator>>(std::istream& is, Date& d);
+	inline bool operator==(const Date& rhs){ return (year == rhs.year) && (month == rhs.month) && (day == rhs.day);}
+	inline bool operator!=(const Date& rhs){ return !(operator==(rhs));}
 private:
 	int year;  // the year (four digits)
 	int month; // the month (1-12)

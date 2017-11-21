@@ -21,13 +21,28 @@ LDFLAGS =   -g
 #LDFLAGS +=  -stdlib=libc++
 
 # Targets
-PROGS =  word-processor spell
+PROGS =  test_tag_remover test_primes date_test test_tostring test_string_cast
 
 all: $(PROGS)
 
+test: test_tag_remover test_primes date_test test_tostring test_string_cast
+	./test_tag_remover
+	./test_primes
+	./date_test
+	./test_tostring
+	./test_string_cast
+
 # Targets rely on implicit rules for compiling and linking
-dictionary: dictionary.o word.o
-spell: spell.o dictionary.o word.o
+#print_argv: print_argv.o
+#test_editor: test_editor.o editor.o
+#test_coding: test_coding.o coding.o
+#encode: encode.o coding.o
+#decode: decode.o coding.o
+test_tag_remover: test_tag_remover.o TagRemover.o
+test_primes: test_primes.o primes.o
+date_test: date_test.o date.o
+test_tostring: test_tostring.o date.o
+test_string_cast: test_string_cast.o date.o
 
 
 # Phony targets
