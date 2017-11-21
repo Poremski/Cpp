@@ -5,7 +5,7 @@
 #include <string>
 #include <iostream>
 #include <algorithm>
-#include <exception>
+#include <stdexcept>
 using std::setw;
 using std::setfill;
 using std::string;
@@ -72,7 +72,7 @@ std::istream& operator>>(std::istream& is, Date& d)
 		month = stoi(s.substr(0,pos));
 		if(month < 1 || month > 12)
 		{
-			throw std::exception();
+			throw std::invalid_argument("Month must be between 1 and 12");
 		}
 		s.erase(0, pos+1);
 
@@ -81,14 +81,14 @@ std::istream& operator>>(std::istream& is, Date& d)
 		day = stoi(s.substr(0,pos));
 		if(day < 1 || day > Date::daysPerMonth[month-1])
 		{
-			throw std::exception();
+			throw std::invalid_argument("Day must be between 1 and maximum for month");
 		}
 		s.erase(0, pos+1);
 
 		d = Date (year, month, day);
 	} catch(std::exception& e)
 	{
-		///std::cout << e.what() << std::endl;
+		//std::cout << typeid(e).name() << ": " << e.what() << std::endl;
 		is.setstate (std::ios::failbit);
 		d = Date (0, 0, 0);
 	}
