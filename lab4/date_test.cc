@@ -244,6 +244,23 @@ bool test_input_invalid_data()
 	return true;
 }
 
+bool test_equals()
+{
+	Date d1{2017,10,11};
+	Date d2{2017,10,11};
+	Date d3{2017,10,10};
+
+	if(!(d1 == d2) || !(d1 != d3))
+	{
+		cout << "test_equals: wrong result" << endl;
+		return false;
+	}
+
+
+	cout << "test_equals: PASSED" << endl;
+	return true;
+}
+
 int main() {
 	//field_test();
 	std::cout << "== date_test ======================" << std::endl;
@@ -257,8 +274,9 @@ int main() {
 	bool g = test_input_spaces();
 	bool h = test_input_extra_dash();
 	bool i = test_input_invalid_data();
+	bool j = test_equals();
 
-	passed = a && b && c && d && e && f && g && h && i;
+	passed = a && b && c && d && e && f && g && h && i && j;
 	if(passed) {
 		std::cout << "-- All tests passed! --------------" << std::endl;
 	}

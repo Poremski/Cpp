@@ -14,6 +14,8 @@ public:
 	void next();               // advance to next day
 	friend std::ostream& operator<<(std::ostream& os, const Date& d);
 	friend std::istream& operator>>(std::istream& is, Date& d);
+	inline bool operator==(const Date& rhs){ return (year == rhs.year) && (month == rhs.month) && (day == rhs.day);}
+	inline bool operator!=(const Date& rhs){ return !(operator==(rhs));}
 private:
 	int year;  // the year (four digits)
 	int month; // the month (1-12)
