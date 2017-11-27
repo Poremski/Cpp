@@ -25,8 +25,8 @@ PROGS =  TestUserTable
 
 all: $(PROGS)
 
-test: #TestUserTable
-	#./TestUserTable
+test: TestUserTable
+	./TestUserTable
 
 #test_coding test_editor
 #./test_coding

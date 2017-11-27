@@ -12,6 +12,7 @@ void print_user(std::string f, User u)
 	cout << f << ": " << u.getName() << ", " << u.getCardNbr() << endl;
 }
 
+
 int main()
 {
 	std::string outName{"testFile.txt"};

@@ -9,6 +9,7 @@ class UserTable{
 public:
     UserTable();
     UserTable(const std::string&);
+    UserTable(const UserTable& obj);
     ~UserTable() {delete[] users;}
 
     void addUser(const User&);
@@ -22,6 +23,8 @@ public:
     }
 
     void print(std::ostream&) const;
+
+
 
     static const User user_not_found;
 private:

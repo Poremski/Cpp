@@ -25,6 +25,15 @@ UserTable::UserTable(const std::string& fname) :UserTable{}
     }
 }
 
+UserTable::UserTable(const UserTable& obj)
+{
+    users = new User[obj.capacity];
+    for(int i = 0; i != obj.capacity; ++i)
+    {
+        addUser(obj.users[i]);
+    }
+}
+
 void UserTable::addUser(const User& u)
 {
     // gör tabellen större vid behov
@@ -121,14 +130,15 @@ int testFindNbr(const UserTable ut)
 
 int UserTable::testFindNumber() const
 {
-	for (int i = 0; i != n; ++i) {
+	/*for (int i = 0; i != n; ++i) {
         int nbr = users[i].getCardNbr();
         User found = find(nbr);
         if (found != users[i]) {
             return nbr;
         }
     }
-    return 0; 
-	//return testFindNbr(*this);
+    return 0;  */
+
+	return testFindNbr(*this);
 }
 
